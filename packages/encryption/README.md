@@ -9,12 +9,12 @@ design and [SECURITY.md](../../SECURITY.md) for the threat model.
 
 ## What's inside
 
-| Primitive | Use |
-|-----------|-----|
-| `deriveMasterKey(passphrase, salt)` | Argon2id → 32-byte master key |
+| Primitive                                    | Use                                                  |
+| -------------------------------------------- | ---------------------------------------------------- |
+| `deriveMasterKey(passphrase, salt)`          | Argon2id → 32-byte master key                        |
 | `deriveVaultKey(master, vaultId, vaultSalt)` | HKDF-SHA-256 → non-extractable AES-256-GCM CryptoKey |
-| `encryptString(plaintext, key, ad)` | AES-256-GCM → versioned envelope |
-| `decryptString(envelope, key, ad)` | Envelope → plaintext (throws on any tampering) |
+| `encryptString(plaintext, key, ad)`          | AES-256-GCM → versioned envelope                     |
+| `decryptString(envelope, key, ad)`           | Envelope → plaintext (throws on any tampering)       |
 
 ## Envelope format
 

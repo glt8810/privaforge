@@ -16,9 +16,9 @@ export default function LandingPage(): React.JSX.Element {
       </h1>
 
       <p className="max-w-2xl text-center text-lg text-slate-300">
-        PrivaForge is the zero-knowledge, end-to-end encrypted home for your AI prompts.
-        Optimize, version, collaborate, and monetize — without a single byte of your content
-        ever reaching our servers unencrypted.
+        PrivaForge is the zero-knowledge, end-to-end encrypted home for your AI prompts. Optimize,
+        version, collaborate, and monetize — without a single byte of your content ever reaching our
+        servers unencrypted.
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-4">

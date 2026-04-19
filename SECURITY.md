@@ -8,27 +8,27 @@ See [ADR-0002](docs/adr/0002-crypto-design.md) for the cryptographic design.
 
 ## Threat model (summary)
 
-| Adversary | In scope? | Mitigation |
-|-----------|-----------|------------|
-| Network attacker on the wire | Yes | TLS 1.3 everywhere + HSTS preload. All user content is already ciphertext before TLS. |
-| Malicious/curious server operator | Yes | Content is encrypted client-side with a key the server never sees. Even with full DB + code access, plaintext is not recoverable. |
-| Subpoena / legal compulsion | Yes | We can hand over only ciphertext, salts, and metadata listed below. No backdoor. |
-| Compromised service account on third-party (Neon, Vercel, Stripe) | Yes | Blast radius = ciphertext only. Stripe never sees prompt content. |
-| XSS / supply-chain compromise of the web app | Partial | Strict CSP, SRI, non-extractable CryptoKeys, Dependabot + CodeQL, `pnpm audit` CI gate. A full runtime-JS compromise still wins — this is the hardest attack to defend against and is why a third-party audit + bug bounty are launch gates. |
-| Passphrase brute force | Yes | Argon2id with 128 MiB memory + 3 iterations. Per-user salt. Minimum passphrase length enforced in UI. |
-| Physical access to unlocked device | No | User responsibility. We recommend Passkey + device lock. |
+| Adversary                                                         | In scope? | Mitigation                                                                                                                                                                                                                                   |
+| ----------------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Network attacker on the wire                                      | Yes       | TLS 1.3 everywhere + HSTS preload. All user content is already ciphertext before TLS.                                                                                                                                                        |
+| Malicious/curious server operator                                 | Yes       | Content is encrypted client-side with a key the server never sees. Even with full DB + code access, plaintext is not recoverable.                                                                                                            |
+| Subpoena / legal compulsion                                       | Yes       | We can hand over only ciphertext, salts, and metadata listed below. No backdoor.                                                                                                                                                             |
+| Compromised service account on third-party (Neon, Vercel, Stripe) | Yes       | Blast radius = ciphertext only. Stripe never sees prompt content.                                                                                                                                                                            |
+| XSS / supply-chain compromise of the web app                      | Partial   | Strict CSP, SRI, non-extractable CryptoKeys, Dependabot + CodeQL, `pnpm audit` CI gate. A full runtime-JS compromise still wins — this is the hardest attack to defend against and is why a third-party audit + bug bounty are launch gates. |
+| Passphrase brute force                                            | Yes       | Argon2id with 128 MiB memory + 3 iterations. Per-user salt. Minimum passphrase length enforced in UI.                                                                                                                                        |
+| Physical access to unlocked device                                | No        | User responsibility. We recommend Passkey + device lock.                                                                                                                                                                                     |
 
 ## Data classification
 
 Every column or field in the system falls into one of these buckets:
 
-| Class | Examples | Storage rule |
-|-------|----------|--------------|
-| **Ciphertext** | prompt body, title, notes, document chunks | `bytea` envelope only. No plaintext logging, ever. |
-| **Hash** | tag hashes | `text` fixed-length hex. One-way. |
-| **User-published public** | marketplace title, description, price | `text` / numeric. The user explicitly chose to publish. |
-| **System metadata** | IDs, timestamps, plan tier, stripe_customer_id | Unencrypted. Does not reveal content. |
-| **Auth material** | email (for login), password-derived key salt | `text` / `bytea`. Salt is random and non-secret. Password/key itself never stored. |
+| Class                     | Examples                                       | Storage rule                                                                       |
+| ------------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Ciphertext**            | prompt body, title, notes, document chunks     | `bytea` envelope only. No plaintext logging, ever.                                 |
+| **Hash**                  | tag hashes                                     | `text` fixed-length hex. One-way.                                                  |
+| **User-published public** | marketplace title, description, price          | `text` / numeric. The user explicitly chose to publish.                            |
+| **System metadata**       | IDs, timestamps, plan tier, stripe_customer_id | Unencrypted. Does not reveal content.                                              |
+| **Auth material**         | email (for login), password-derived key salt   | `text` / `bytea`. Salt is random and non-secret. Password/key itself never stored. |
 
 **Adding a new column?** It MUST fit one of these buckets. If it's user-provided
 free text, it's ciphertext. Ambiguity = block the PR.
@@ -67,6 +67,7 @@ Email **security@privaforge.ai** with:
 - Proof-of-concept if available.
 
 We commit to:
+
 - Acknowledge within 24 hours.
 - Fix or mitigate within 30 days for Critical/High.
 - Publicly credit the reporter on request.
@@ -74,15 +75,15 @@ We commit to:
 
 ## Cryptographic constants (pinned)
 
-| Parameter | Value |
-|-----------|-------|
-| Argon2id memory | 128 MiB |
-| Argon2id iterations | 3 |
-| Master key length | 256 bits |
-| AEAD | AES-256-GCM |
-| IV length | 96 bits (random per message) |
-| GCM tag length | 128 bits |
-| KDF (secondary) | HKDF-SHA-256 |
-| Envelope version | 1 (`0x01`) |
+| Parameter           | Value                        |
+| ------------------- | ---------------------------- |
+| Argon2id memory     | 128 MiB                      |
+| Argon2id iterations | 3                            |
+| Master key length   | 256 bits                     |
+| AEAD                | AES-256-GCM                  |
+| IV length           | 96 bits (random per message) |
+| GCM tag length      | 128 bits                     |
+| KDF (secondary)     | HKDF-SHA-256                 |
+| Envelope version    | 1 (`0x01`)                   |
 
 Any change to this table requires a new ADR, a re-audit, and a migration plan.

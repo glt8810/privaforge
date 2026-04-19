@@ -2,12 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { decryptString, encryptString } from '../src/aead.js';
 import { CryptoError, DecryptErrorCode } from '../src/errors.js';
-import {
-  deriveMasterKey,
-  deriveVaultKey,
-  generateSalt,
-  importAesKey,
-} from '../src/kdf.js';
+import { deriveMasterKey, deriveVaultKey, generateSalt, importAesKey } from '../src/kdf.js';
 import { KEY_LENGTH, SALT_LENGTH, type AssociatedData } from '../src/types.js';
 
 const AD: AssociatedData = {
@@ -89,9 +84,9 @@ describe('kdf', () => {
   });
 
   it('deriveVaultKey rejects malformed inputs', async () => {
-    await expect(
-      deriveVaultKey(new Uint8Array(16), 'v', generateSalt()),
-    ).rejects.toBeInstanceOf(CryptoError);
+    await expect(deriveVaultKey(new Uint8Array(16), 'v', generateSalt())).rejects.toBeInstanceOf(
+      CryptoError,
+    );
     await expect(
       deriveVaultKey(new Uint8Array(KEY_LENGTH), 'v', new Uint8Array(8)),
     ).rejects.toBeInstanceOf(CryptoError);

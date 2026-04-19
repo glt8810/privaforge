@@ -2,12 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { decodeEnvelope, encodeEnvelope } from '../src/envelope.js';
 import { CryptoError, DecryptErrorCode } from '../src/errors.js';
-import {
-  ALG_AES_256_GCM,
-  ENVELOPE_VERSION,
-  GCM_TAG_LENGTH,
-  IV_LENGTH,
-} from '../src/types.js';
+import { ALG_AES_256_GCM, ENVELOPE_VERSION, GCM_TAG_LENGTH, IV_LENGTH } from '../src/types.js';
 
 describe('envelope', () => {
   const validEnv = {
@@ -28,9 +23,7 @@ describe('envelope', () => {
   });
 
   it('rejects IV of wrong length', () => {
-    expect(() =>
-      encodeEnvelope({ ...validEnv, iv: new Uint8Array(11) }),
-    ).toThrowError(CryptoError);
+    expect(() => encodeEnvelope({ ...validEnv, iv: new Uint8Array(11) })).toThrowError(CryptoError);
   });
 
   it('rejects ciphertext shorter than auth tag', () => {

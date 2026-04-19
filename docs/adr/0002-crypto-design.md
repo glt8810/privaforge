@@ -13,13 +13,13 @@ new ADR and a re-audit.
 
 ## Primitives
 
-| Operation | Primitive | Parameters |
-|-----------|-----------|------------|
-| Passphrase → Master Key | **Argon2id** (libsodium) | memory = 128 MiB, iterations (opsLimit) = 3, parallelism = 1, output = 32 bytes |
-| Master Key → Vault Key | **HKDF-SHA-256** (Web Crypto) | info = `"privaforge.vault.v1\|" + vaultId`, salt = per-vault random 16 bytes, output = 32 bytes |
-| Content encryption | **AES-256-GCM** (Web Crypto) | 96-bit random IV per message, 128-bit auth tag, AAD binds context |
-| Sharing (future) | **X25519 + ChaCha20-Poly1305** (libsodium) | Ephemeral sender key, recipient long-term key |
-| Random | `crypto.getRandomValues` (Web Crypto) | CSPRNG — platform-guaranteed |
+| Operation               | Primitive                                  | Parameters                                                                                      |
+| ----------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| Passphrase → Master Key | **Argon2id** (libsodium)                   | memory = 128 MiB, iterations (opsLimit) = 3, parallelism = 1, output = 32 bytes                 |
+| Master Key → Vault Key  | **HKDF-SHA-256** (Web Crypto)              | info = `"privaforge.vault.v1\|" + vaultId`, salt = per-vault random 16 bytes, output = 32 bytes |
+| Content encryption      | **AES-256-GCM** (Web Crypto)               | 96-bit random IV per message, 128-bit auth tag, AAD binds context                               |
+| Sharing (future)        | **X25519 + ChaCha20-Poly1305** (libsodium) | Ephemeral sender key, recipient long-term key                                                   |
+| Random                  | `crypto.getRandomValues` (Web Crypto)      | CSPRNG — platform-guaranteed                                                                    |
 
 ## Envelope Format v1
 
@@ -82,6 +82,7 @@ GCM auth failure on decrypt.
 ## Audit gate
 
 This design MUST NOT be changed without:
+
 1. A new ADR documenting the change and its threat-model impact.
 2. Sign-off from the external cryptography auditor.
 3. A compatibility migration plan for existing encrypted data.
