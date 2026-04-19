@@ -15,6 +15,10 @@ updates:
       dev-deps:
         dependency-type: development
         update-types: [patch, minor]
+    ignore:
+      # eslint-plugin-react 7.x (pulled in by eslint-config-next) only supports ESLint 9.
+      - dependency-name: eslint
+        update-types: [version-update:semver-major]
   - package-ecosystem: github-actions
     directory: /
     schedule:
