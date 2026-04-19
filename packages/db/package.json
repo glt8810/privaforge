@@ -21,7 +21,7 @@
     "clean": "rm -rf dist .turbo *.tsbuildinfo"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^0.10.0",
+    "@neondatabase/serverless": "^1.1.0",
     "drizzle-orm": "^0.45.2",
     "postgres": "^3.4.4"
   },
