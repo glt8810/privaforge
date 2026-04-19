@@ -3,6 +3,8 @@
 
 :root {
   color-scheme: dark;
+  --font-inter: 'InterVariable', system-ui, sans-serif;
+  --font-jetbrains-mono: 'JetBrains MonoVariable', monospace;
 }
 
 html {
