@@ -1,16 +1,19 @@
 # CODEOWNERS — required reviewers per path.
-# All PRs touching these paths need the listed owner's approval before merge.
-# See GitHub branch protection rules for enforcement.
+#
+# NOTE: Currently scoped to @glt8810 (solo personal repo). When the repo moves
+# to an organization with a team, replace each owner with the appropriate team
+# handle, e.g. @org/security-reviewers. The path layout below already reflects
+# the intended separation of concerns.
 
 # Crypto code — mandatory security review. Never merge without it.
-/packages/encryption/          @privaforge/security-reviewers
-/docs/adr/0002-crypto-design.md @privaforge/security-reviewers
+/packages/encryption/          @glt8810
+/docs/adr/0002-crypto-design.md @glt8810
 
-# Database schema — needs backend lead to catch migration footguns.
-/packages/db/                  @privaforge/backend-leads
+# Database schema — needs backend-lead review to catch migration footguns.
+/packages/db/                  @glt8810
 
 # CI and security workflows — infra owners only.
-/.github/workflows/            @privaforge/infra
+/.github/workflows/            @glt8810
 
 # Default — everything else requires at least one code review.
-*                              @privaforge/eng
+*                              @glt8810

@@ -4,6 +4,14 @@
   "private": true,
   "description": "PrivaForge AI — privacy-first, zero-knowledge E2EE prompt engineering & management platform",
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glt8810/privaforge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/glt8810/privaforge/issues"
+  },
+  "homepage": "https://github.com/glt8810/privaforge#readme",
   "packageManager": "pnpm@9.12.0",
   "engines": {
     "node": ">=22.0.0",
