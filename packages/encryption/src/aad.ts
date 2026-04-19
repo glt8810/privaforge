@@ -11,7 +11,7 @@ const AAD_PREFIX = 'privaforge.v1';
  * Fields are joined with `|`. Fields must not contain `|` (userId and
  * resourceId are UUIDs; resourceType is an enum).
  */
-export function serializeAAD(ad: AssociatedData): Uint8Array {
+export function serializeAAD(ad: AssociatedData): Uint8Array<ArrayBuffer> {
   for (const field of [ad.userId, ad.resourceId] as const) {
     if (field.includes('|')) {
       throw new Error(`AAD field contains reserved delimiter: ${field}`);

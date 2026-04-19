@@ -21,12 +21,13 @@
     "clean": "rm -rf dist .turbo *.tsbuildinfo"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^0.10.0",
+    "@neondatabase/serverless": "^1.1.0",
     "drizzle-orm": "^0.45.2",
     "postgres": "^3.4.4"
   },
   "devDependencies": {
     "@types/node": "^22.7.5",
+    "@typescript-eslint/parser": "^8.58.2",
     "drizzle-kit": "^0.31.10",
     "tsx": "^4.19.1",
     "typescript": "^5.6.3",

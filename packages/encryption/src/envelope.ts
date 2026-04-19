@@ -11,7 +11,7 @@ import {
  * Encodes an envelope to a flat byte array:
  *   [version:1][alg:1][iv:12][ciphertext||tag]
  */
-export function encodeEnvelope(env: Envelope): Uint8Array {
+export function encodeEnvelope(env: Envelope): Uint8Array<ArrayBuffer> {
   if (env.iv.length !== IV_LENGTH) {
     throw new CryptoError('INVALID_INPUT', `IV must be ${IV_LENGTH} bytes`);
   }
@@ -51,7 +51,7 @@ export function decodeEnvelope(bytes: Uint8Array): Envelope {
   return {
     version: ENVELOPE_VERSION,
     alg: ALG_AES_256_GCM,
-    iv: bytes.slice(2, 2 + IV_LENGTH),
-    ciphertext: bytes.slice(2 + IV_LENGTH),
+    iv: bytes.slice(2, 2 + IV_LENGTH) as Uint8Array<ArrayBuffer>,
+    ciphertext: bytes.slice(2 + IV_LENGTH) as Uint8Array<ArrayBuffer>,
   };
 }

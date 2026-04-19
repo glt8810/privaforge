@@ -21,16 +21,16 @@ export async function encryptString(
   plaintext: string,
   key: CryptoKey,
   ad: AssociatedData,
-): Promise<Uint8Array> {
+): Promise<Uint8Array<ArrayBuffer>> {
   const pt = new TextEncoder().encode(plaintext);
   return encryptBytes(pt, key, ad);
 }
 
 export async function encryptBytes(
-  plaintext: Uint8Array,
+  plaintext: Uint8Array<ArrayBuffer>,
   key: CryptoKey,
   ad: AssociatedData,
-): Promise<Uint8Array> {
+): Promise<Uint8Array<ArrayBuffer>> {
   if (plaintext.length > MAX_PLAINTEXT_BYTES) {
     throw new CryptoError(
       'INVALID_INPUT',
@@ -75,7 +75,7 @@ export async function decryptBytes(
   envelopeBytes: Uint8Array,
   key: CryptoKey,
   ad: AssociatedData,
-): Promise<Uint8Array> {
+): Promise<Uint8Array<ArrayBuffer>> {
   const env = decodeEnvelope(envelopeBytes);
   const aad = serializeAAD(ad);
   const subtle = getSubtle();

@@ -37,8 +37,8 @@ export interface AssociatedData {
 export interface Envelope {
   readonly version: typeof ENVELOPE_VERSION;
   readonly alg: AlgorithmId;
-  readonly iv: Uint8Array;
-  readonly ciphertext: Uint8Array;
+  readonly iv: Uint8Array<ArrayBuffer>;
+  readonly ciphertext: Uint8Array<ArrayBuffer>;
 }
 
 export type Result<T, E> = { ok: true; value: T } | { ok: false; error: E };

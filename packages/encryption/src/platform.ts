@@ -17,7 +17,7 @@ export function getSubtle(): SubtleCrypto {
 }
 
 /** CSPRNG — fills `out` with cryptographically strong random bytes. */
-export function randomBytes(length: number): Uint8Array {
+export function randomBytes(length: number): Uint8Array<ArrayBuffer> {
   const g = globalThis as { crypto?: Crypto };
   if (!g.crypto?.getRandomValues) {
     throw new CryptoError('UNAVAILABLE', 'crypto.getRandomValues is not available.');
