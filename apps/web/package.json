@@ -1,0 +1,42 @@
+{
+  "name": "@privaforge/web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PrivaForge AI — Next.js 15 web application.",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf .next .turbo dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@privaforge/api-types": "workspace:*",
+    "@privaforge/encryption": "workspace:*",
+    "@t3-oss/env-nextjs": "^0.11.1",
+    "@tanstack/react-query": "^5.59.0",
+    "clsx": "^2.1.1",
+    "next": "^15.0.2",
+    "react": "^19.0.0-rc-65a56d0e-20241020",
+    "react-dom": "^19.0.0-rc-65a56d0e-20241020",
+    "tailwind-merge": "^2.5.4",
+    "zod": "^3.23.8",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.12.0",
+    "eslint-config-next": "^15.0.2",
+    "postcss": "^8.4.47",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
+  }
+}

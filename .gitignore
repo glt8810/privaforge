@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+.next/
+out/
+.turbo/
+*.tsbuildinfo
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Env — NEVER commit real secrets
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+# Allow examples
+!.env.example
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+
+# Claude Code local settings — user-specific, not project-wide
+.claude/settings.local.json
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# Test artifacts
+playwright-report/
+test-results/
+.playwright/
+
+# Local DB / secrets
+*.sqlite
+*.db
+secrets/
+
+# Cache
+.cache/
+.eslintcache
+.prettiercache

@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 10
+    groups:
+      # Security patches get their own PR and auto-merge if CI passes (gated by branch rules).
+      security-patches:
+        applies-to: security-updates
+        patterns: ['*']
+      # Low-risk dev deps grouped to reduce PR noise.
+      dev-deps:
+        dependency-type: development
+        update-types: [patch, minor]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

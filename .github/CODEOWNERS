@@ -1,0 +1,16 @@
+# CODEOWNERS — required reviewers per path.
+# All PRs touching these paths need the listed owner's approval before merge.
+# See GitHub branch protection rules for enforcement.
+
+# Crypto code — mandatory security review. Never merge without it.
+/packages/encryption/          @privaforge/security-reviewers
+/docs/adr/0002-crypto-design.md @privaforge/security-reviewers
+
+# Database schema — needs backend lead to catch migration footguns.
+/packages/db/                  @privaforge/backend-leads
+
+# CI and security workflows — infra owners only.
+/.github/workflows/            @privaforge/infra
+
+# Default — everything else requires at least one code review.
+*                              @privaforge/eng

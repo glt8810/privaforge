@@ -1,0 +1,32 @@
+{
+  "name": "@privaforge/encryption",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Zero-knowledge client-side encryption primitives for PrivaForge. Argon2id + HKDF-SHA-256 + AES-256-GCM.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./envelope": "./src/envelope.ts",
+    "./kdf": "./src/kdf.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "lint": "eslint src --max-warnings=0",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo *.tsbuildinfo"
+  },
+  "dependencies": {
+    "libsodium-wrappers-sumo": "^0.7.15"
+  },
+  "devDependencies": {
+    "@types/libsodium-wrappers-sumo": "^0.7.8",
+    "@types/node": "^22.7.5",
+    "fast-check": "^3.22.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
+  }
+}
