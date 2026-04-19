@@ -1,9 +1,10 @@
-import { FlatCompat } from '@eslint/eslintrc';
+import coreWebVitals from 'eslint-config-next/core-web-vitals';
+import nextTypescript from 'eslint-config-next/typescript';
 
-const compat = new FlatCompat({ baseDirectory: import.meta.dirname });
-
-export default [
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+/** @type {import('eslint').Linter.Config[]} */
+const config = [
+  ...coreWebVitals,
+  ...nextTypescript,
   {
     rules: {
       'no-console': ['error', { allow: ['warn', 'error'] }],
@@ -15,3 +16,5 @@ export default [
     ignores: ['.next/**', 'node_modules/**', 'dist/**'],
   },
 ];
+
+export default config;
