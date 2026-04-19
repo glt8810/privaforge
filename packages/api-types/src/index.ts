@@ -54,7 +54,11 @@ const PromptEnvelope = z.object({
    * AAD version number — must match the version field baked into the ciphertext's AAD.
    * Incrementing this invalidates the old ciphertext, forcing a re-encryption.
    */
-  aadVersion: z.number().int().min(1).max(2 ** 31 - 1),
+  aadVersion: z
+    .number()
+    .int()
+    .min(1)
+    .max(2 ** 31 - 1),
 });
 
 export const CreatePromptRequest = z.object({
@@ -86,7 +90,10 @@ export const UpdatePromptRequest = z.object({
   content: PromptEnvelope.optional(),
   title: PromptEnvelope.nullable().optional(),
   folderId: Uuid.nullable().optional(),
-  tagHashes: z.array(z.string().regex(/^[a-f0-9]{64}$/)).max(32).optional(),
+  tagHashes: z
+    .array(z.string().regex(/^[a-f0-9]{64}$/))
+    .max(32)
+    .optional(),
   /** The version the client last saw — for optimistic concurrency control. */
   expectedVersion: z.number().int().min(1),
 });

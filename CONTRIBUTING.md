@@ -40,7 +40,7 @@ Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`,
 - TypeScript strict mode. No `any` without an adjacent `// @ts-expect-error` + justification.
 - Prefer `Result<T, E>` / typed errors over throwing `Error` for expected failure paths.
 - No unused exports. No dead code.
-- No comments that describe *what* the code does — good names cover that. Comments are for *why*, for invariants, and for references to ADRs/RFCs.
+- No comments that describe _what_ the code does — good names cover that. Comments are for _why_, for invariants, and for references to ADRs/RFCs.
 - Never log secrets, plaintext, or keys. `console.log` is banned in `packages/encryption`.
 
 ## Adding a dependency

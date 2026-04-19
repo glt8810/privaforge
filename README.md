@@ -49,12 +49,12 @@ pnpm dev        # → http://localhost:3000
 
 ## Phased roadmap (from the implementation plan)
 
-| Phase | Weeks | Scope | Status |
-|-------|-------|-------|--------|
-| Phase 0 | Pre-kickoff | Monorepo, ADRs, CI, security gates | ✅ this commit |
-| Phase 1 | 1–3 | Auth + E2EE vault + version history + optimizer MVP | 🚧 next |
-| Phase 2 | 4–6 | Marketplace + Stripe Connect + collab basics | ⏳ |
-| Phase 3 | 7–9 | Pentest, hardening, launch prep | ⏳ |
+| Phase   | Weeks       | Scope                                               | Status         |
+| ------- | ----------- | --------------------------------------------------- | -------------- |
+| Phase 0 | Pre-kickoff | Monorepo, ADRs, CI, security gates                  | ✅ this commit |
+| Phase 1 | 1–3         | Auth + E2EE vault + version history + optimizer MVP | 🚧 next        |
+| Phase 2 | 4–6         | Marketplace + Stripe Connect + collab basics        | ⏳             |
+| Phase 3 | 7–9         | Pentest, hardening, launch prep                     | ⏳             |
 
 ## Key design docs
 
@@ -65,16 +65,16 @@ pnpm dev        # → http://localhost:3000
 
 ## Scripts
 
-| Command | What it does |
-|---------|--------------|
-| `pnpm dev` | Run Next.js dev server (Turbopack) |
-| `pnpm build` | Build every workspace, cached by Turborepo |
-| `pnpm test` | Run Vitest across every package |
-| `pnpm typecheck` | Strict TS check across every package |
-| `pnpm lint` | ESLint flat config, max-warnings=0 |
-| `pnpm format` | Prettier write |
+| Command                                    | What it does                                     |
+| ------------------------------------------ | ------------------------------------------------ |
+| `pnpm dev`                                 | Run Next.js dev server (Turbopack)               |
+| `pnpm build`                               | Build every workspace, cached by Turborepo       |
+| `pnpm test`                                | Run Vitest across every package                  |
+| `pnpm typecheck`                           | Strict TS check across every package             |
+| `pnpm lint`                                | ESLint flat config, max-warnings=0               |
+| `pnpm format`                              | Prettier write                                   |
 | `pnpm --filter @privaforge/db db:generate` | Generate a Drizzle migration from schema changes |
-| `pnpm --filter @privaforge/db db:migrate` | Apply pending migrations |
+| `pnpm --filter @privaforge/db db:migrate`  | Apply pending migrations                         |
 
 ## Non-goals (for the MVP)
 

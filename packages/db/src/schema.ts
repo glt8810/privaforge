@@ -92,7 +92,10 @@ export const prompts = pgTable(
     encryptedContent: bytea('encrypted_content').notNull(),
     titleEncrypted: bytea('title_encrypted'),
     /** One-way hashes (sha256 hex) so the server can filter by tag without seeing tag text. */
-    tagHashes: text('tag_hashes').array().notNull().default(sql`'{}'::text[]`),
+    tagHashes: text('tag_hashes')
+      .array()
+      .notNull()
+      .default(sql`'{}'::text[]`),
     version: integer('version').notNull().default(1),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
