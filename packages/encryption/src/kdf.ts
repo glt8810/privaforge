@@ -28,7 +28,7 @@ export function generateSalt(): Uint8Array {
  */
 export async function deriveMasterKey(
   passphrase: string,
-  salt: Uint8Array,
+  salt: Uint8Array<ArrayBuffer>,
   params: Argon2idParams = DEFAULT_ARGON2ID_PARAMS,
 ): Promise<Uint8Array> {
   if (passphrase.length === 0) {
@@ -57,9 +57,9 @@ export async function deriveMasterKey(
  * XSS or supply-chain compromise.
  */
 export async function deriveVaultKey(
-  masterKey: Uint8Array,
+  masterKey: Uint8Array<ArrayBuffer>,
   vaultId: string,
-  vaultSalt: Uint8Array,
+  vaultSalt: Uint8Array<ArrayBuffer>,
 ): Promise<CryptoKey> {
   if (masterKey.length !== KEY_LENGTH) {
     throw new CryptoError('INVALID_INPUT', `master key must be ${KEY_LENGTH} bytes`);
@@ -83,7 +83,7 @@ export async function deriveVaultKey(
  * Imports a raw 32-byte key as an AES-256-GCM CryptoKey. Marked non-extractable.
  * Primarily useful for tests and for unwrapping keys received via sharing.
  */
-export async function importAesKey(raw: Uint8Array): Promise<CryptoKey> {
+export async function importAesKey(raw: Uint8Array<ArrayBuffer>): Promise<CryptoKey> {
   if (raw.length !== KEY_LENGTH) {
     throw new CryptoError('INVALID_INPUT', `raw key must be ${KEY_LENGTH} bytes`);
   }

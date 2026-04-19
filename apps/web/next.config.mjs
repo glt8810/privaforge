@@ -43,9 +43,7 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
-  experimental: {
-    typedRoutes: true,
-  },
+  typedRoutes: true,
   transpilePackages: ['@privaforge/encryption', '@privaforge/api-types'],
   async headers() {
     return [
