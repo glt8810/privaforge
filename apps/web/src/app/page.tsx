@@ -23,16 +23,16 @@ export default function LandingPage(): React.JSX.Element {
 
       <div className="flex flex-wrap items-center justify-center gap-4">
         <Link
-          href="/waitlist"
+          href="/sign-up"
           className="bg-brand-500 shadow-brand-500/30 hover:bg-brand-400 rounded-lg px-6 py-3 font-semibold text-white shadow-lg transition"
         >
-          Join the waitlist
+          Create account
         </Link>
         <Link
-          href="/security"
+          href="/sign-in"
           className="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-100 transition hover:border-slate-500"
         >
-          How the encryption works →
+          Sign in
         </Link>
       </div>
 
