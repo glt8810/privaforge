@@ -7,7 +7,7 @@ export default function LandingPage(): React.JSX.Element {
     <main className="mx-auto flex min-h-dvh max-w-5xl flex-col items-center justify-center gap-10 px-6 py-24">
       <EncryptedBadge />
 
-      <h1 className="bg-gradient-to-br from-white to-brand-300 bg-clip-text text-center text-5xl font-bold tracking-tight text-transparent sm:text-7xl">
+      <h1 className="to-brand-300 bg-gradient-to-br from-white bg-clip-text text-center text-5xl font-bold tracking-tight text-transparent sm:text-7xl">
         Your prompts.
         <br />
         Your keys.
@@ -24,7 +24,7 @@ export default function LandingPage(): React.JSX.Element {
       <div className="flex flex-wrap items-center justify-center gap-4">
         <Link
           href="/waitlist"
-          className="rounded-lg bg-brand-500 px-6 py-3 font-semibold text-white shadow-lg shadow-brand-500/30 transition hover:bg-brand-400"
+          className="bg-brand-500 shadow-brand-500/30 hover:bg-brand-400 rounded-lg px-6 py-3 font-semibold text-white shadow-lg transition"
         >
           Join the waitlist
         </Link>

@@ -14,7 +14,7 @@ export function EncryptedBadge({
       role="status"
       aria-label="End-to-end encrypted"
       className={cn(
-        'inline-flex items-center gap-2 rounded-full border border-vault-500/30 bg-vault-500/10 px-3 py-1 font-mono text-xs text-vault-500',
+        'border-vault-500/30 bg-vault-500/10 text-vault-500 inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-xs',
         className,
       )}
     >
