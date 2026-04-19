@@ -54,3 +54,4 @@ secrets/
 .cache/
 .eslintcache
 .prettiercache
+.github/ruleset-*.json
